@@ -58,8 +58,7 @@
 
   <!-- Prismic Config -->
   <bean id="prismicConfig" class="io.prismic.starter.helper.PrismicConfig">
-    <!--<property name="apiEndpoint" value="https://lesbonneschoses.prismic.io/api" />-->
-    <property name="apiEndpoint" value="https://lesbonneschoses-ukqfenm01oanjt.prismic.io/api"/>
+    <property name="apiEndpoint" value="https://lesbonneschoses.prismic.io/api" />
     <!-- <property name="accessToken" value="xxxxxx" /> -->
     <!-- <property name="clientId" value="xxxxxx" /> -->
     <!-- <property name="clientSecret" value="xxxxxx" /> -->
