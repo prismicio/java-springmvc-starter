@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:mvc="http://www.springframework.org/schema/mvc"
-  xmlns:aop="http://www.springframework.org/schema/aop"
-  xsi:schemaLocation="
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
   http://www.springframework.org/schema/mvc 
   http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
   http://www.springframework.org/schema/beans 
@@ -19,40 +19,42 @@
   <!-- Configures the @Controller programming model -->
   <mvc:annotation-driven/>
 
-  <mvc:resources mapping="/images/**" location="WEB-INF/images/" />
-  <mvc:resources mapping="/stylesheets/**" location="WEB-INF/stylesheets/" />
-  <mvc:resources mapping="/javascripts/**" location="WEB-INF/javascripts/" />
+  <mvc:resources mapping="/images/**" location="WEB-INF/images/"/>
+  <mvc:resources mapping="/stylesheets/**" location="WEB-INF/stylesheets/"/>
+  <mvc:resources mapping="/javascripts/**" location="WEB-INF/javascripts/"/>
 
   <!-- Resolve jsp's -->
   <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-      <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-      <property name="prefix" value="/WEB-INF/views/"/>
-      <property name="suffix" value=".jsp"/>
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    <property name="prefix" value="/WEB-INF/views/"/>
+    <property name="suffix" value=".jsp"/>
   </bean>
 
   <!-- Prismic Context -->
   <bean id="prismicContext" class="io.prismic.starter.helper.PrismicContext" scope="request">
-    <property name="config" ref="prismicConfig" />
-    <property name="cache" ref="prismicCache" />
-    <property name="logger" ref="prismicLogger" />
-    <property name="linkResolver" ref="prismicLinkResolver" />
-    <aop:scoped-proxy />
+    <property name="config" ref="prismicConfig"/>
+    <property name="cache" ref="prismicCache"/>
+    <property name="logger" ref="prismicLogger"/>
+    <property name="linkResolver" ref="prismicLinkResolver"/>
+    <aop:scoped-proxy/>
   </bean>
 
   <!-- Link Resolver -->
   <bean id="prismicLinkResolver" class="io.prismic.starter.helper.LinkResolver" scope="request" lazy-init="true">
-    <property name="prismicContext" ref="prismicContext" />
+    <property name="prismicContext" ref="prismicContext"/>
 
-    <aop:scoped-proxy />
+    <aop:scoped-proxy/>
   </bean>
 
   <!-- Prismic Cache -->
-  <bean id="prismicCache" class="io.prismic.Cache.BuiltInCache">
-    <constructor-arg type="int"><value>200</value></constructor-arg>
+  <bean id="prismicCache" class="io.prismic.Cache$BuiltInCache">
+    <constructor-arg type="int">
+      <value>200</value>
+    </constructor-arg>
   </bean>
 
   <!-- Println Logger -->
-  <bean id="prismicLogger" class="io.prismic.Logger.PrintlnLogger" />
+  <bean id="prismicLogger" class="io.prismic.Logger$PrintlnLogger"/>
 
   <!-- Prismic Config -->
   <bean id="prismicConfig" class="io.prismic.starter.helper.PrismicConfig">
