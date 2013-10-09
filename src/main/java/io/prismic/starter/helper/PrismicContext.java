@@ -1,14 +1,18 @@
 package io.prismic.starter.helper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.annotation.*;
-import javax.servlet.http.*;
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.context.annotation.*;
-import org.springframework.beans.factory.annotation.*;
-
-import io.prismic.*;
+import io.prismic.Api;
+import io.prismic.Cache;
+import io.prismic.Document;
+import io.prismic.DocumentLinkResolver;
+import io.prismic.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /** 
  * A Prismic context that help to keep the reference 
@@ -114,7 +118,7 @@ public class PrismicContext {
       q.append("[[:d = any(document.id, [");
       String sep = "";
       for(String id: ids) {
-        q.append(sep + "\"" + id + "\"");
+        q.append(sep).append("\"").append(id).append("\"");
         sep = ",";
       }
       q.append("\"]]");
