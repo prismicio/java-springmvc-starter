@@ -1,8 +1,16 @@
 ## Starter for Spring MVC projects
 
-This is a blank [Spring MVC](http://projects.spring.io/spring-framework/) project that will connect to any [prismic.io](https://prismic.io) repository. It uses the prismic.io Java developement kit, and provide a few helpers to integrate with the Spring framework.
+This is a blank [Spring MVC](http://projects.spring.io/spring-framework/) project that will connect to any [prismic.io](https://prismic.io) repository, and trivially list its documents. It uses the prismic.io Java developement kit, and provide a few helpers to integrate with the Spring framework.
 
-### How to start?
+### Getting started
+
+#### Launch the starter project
+
+Assuming you've installed [Maven](http://maven.apache.org/download.cgi), just run ```mvn jetty:run```, and open your browser at http://localhost:8080/
+
+Your Spring MVC starter project is now up and running! However, by default, it will list and display documents from our "[Les Bonnes Choses](http://lesbonneschoses.prismic.me)" example repository.
+
+#### Configure the starter project
 
 Edit the `web-context.xml` file to make the application point to the correct repository:
 
@@ -16,7 +24,22 @@ Edit the `web-context.xml` file to make the application point to the correct rep
 </bean>
 ```
 
-Run your play application using either the `mvn jetty:run` and open your browser at http://localhost:8080/
+To set up the OAuth configuration and interactive signin, go to the _Applications_ panel in your repository's settings, and create a new OAuth application. You simply have to fill in an application name and potentially the callback URL (`localhost` URLs are always authorized, so at development time you can omit to fill in the Callback URL field). After submitting, copy/paste the `clientId` & `clientSecret` tokens into the proper place in your configuration.
+
+You may have to restart your Spring MVC server.
+
+
+#### Get started with prismic.io
+
+You can find out [how to get started with prismic.io](https://developers.prismic.io/documentation/UjBaQsuvzdIHvE4D/getting-started) on our [prismic.io developer's portal](https://developers.prismic.io/).
+
+#### Understand the Java development kit
+
+You'll find more information about how to use the development kit included in this starter project, by reading [its README file](https://github.com/prismicio/java-kit/blob/master/README.md).
+
+### Contribute to the starter project
+
+Contribution is open to all developer levels, read our "[Contribute to the official kits](https://developers.prismic.io/documentation/UszOeAEAANUlwFpp/contribute-to-the-official-kits)" documentation to learn more.
 
 ### Licence
 
