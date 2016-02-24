@@ -14,7 +14,7 @@
   http://www.springframework.org/schema/aop         
   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-  <context:component-scan base-package="io.prismic.starter.web"/>
+  <context:component-scan base-package="io.prismic.starter"/>
 
   <!-- Configures the @Controller programming model -->
   <mvc:annotation-driven/>
@@ -30,19 +30,8 @@
     <property name="suffix" value=".jsp"/>
   </bean>
 
-  <!-- Prismic Context -->
-  <bean id="prismicContext" class="io.prismic.starter.helper.PrismicContext" scope="request">
-    <property name="config" ref="prismicConfig"/>
-    <property name="cache" ref="prismicCache"/>
-    <property name="logger" ref="prismicLogger"/>
-    <property name="linkResolver" ref="prismicLinkResolver"/>
-    <aop:scoped-proxy/>
-  </bean>
-
   <!-- Link Resolver -->
-  <bean id="prismicLinkResolver" class="io.prismic.starter.helper.LinkResolver" scope="request" lazy-init="true">
-    <property name="prismicContext" ref="prismicContext"/>
-
+  <bean id="prismicLinkResolver" class="io.prismic.starter.LinkResolver" scope="request" lazy-init="true">
     <aop:scoped-proxy/>
   </bean>
 
@@ -55,13 +44,5 @@
 
   <!-- Println Logger -->
   <bean id="prismicLogger" class="io.prismic.Logger$PrintlnLogger"/>
-
-  <!-- Prismic Config -->
-  <bean id="prismicConfig" class="io.prismic.starter.helper.PrismicConfig">
-    <property name="apiEndpoint" value="https://lesbonneschoses.prismic.io/api" />
-    <!-- <property name="accessToken" value="xxxxxx" /> -->
-    <!-- <property name="clientId" value="xxxxxx" /> -->
-    <!-- <property name="clientSecret" value="xxxxxx" /> -->
-  </bean>
 
 </beans>

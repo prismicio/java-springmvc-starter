@@ -12,22 +12,25 @@ Your Spring MVC starter project is now up and running! However, by default, it w
 
 #### Configure the starter project
 
-Edit the `web-context.xml` file to make the application point to the correct repository:
+Edit the `web.xml` file to make the application point to the correct repository in the prismic filter:
 
 ```
-<!-- Prismic Config -->
-<bean id="prismicConfig" class="io.prismic.starter.helper.PrismicConfig">
-  <property name="apiEndpoint" value="https://lesbonneschoses.prismic.io/api" />
-  <!-- <property name="accessToken" value="xxxxxx" /> -->
-  <!-- <property name="clientId" value="xxxxxx" /> -->
-  <!-- <property name="clientSecret" value="xxxxxx" /> -->
-</bean>
+  <!--  Prismic.io -->
+  <filter>
+    <filter-name>prismicFilter</filter-name>
+    <filter-class>io.prismic.servlet.PrismicFilter</filter-class>
+    <init-param>
+        <param-name>endpoint</param-name>
+        <param-value>https://lesbonneschoses.prismic.io/api</param-value>
+        <!-- param-name>accessToken</param-name>
+        <param-value>xxxx</param-value -->
+    </init-param>
+  </filter>
 ```
 
-To set up the OAuth configuration and interactive signin, go to the _Applications_ panel in your repository's settings, and create a new OAuth application. You simply have to fill in an application name and potentially the callback URL (`localhost` URLs are always authorized, so at development time you can omit to fill in the Callback URL field). After submitting, copy/paste the `clientId` & `clientSecret` tokens into the proper place in your configuration.
+To set up the Previews, go to the _Applications_ panel in your repository's settings, and add a new preview site. For example to test locally, you can create a `local` site with `http://localhost:8080/preview` as the URL.
 
 You may have to restart your Spring MVC server.
-
 
 #### Get started with prismic.io
 

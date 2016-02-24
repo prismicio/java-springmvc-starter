@@ -4,18 +4,13 @@
 <html>
     <head>
         <title>Search results</title>
+        <!-- Required for previews, edit button and experiments -->
+        <script src="//static.cdn.prismic.io/prismic.min.js"></script>        
     </head>
     <body>
 
-        <c:set var="ref" scope="page" value="${(empty prismic.maybeRef()) ? '' : '?ref='.concat(prismic.maybeRef())}"/>
-
         <header>
-          <jsp:include page="toolbar.jsp" />
-
-          <a href="/${ref}">
-            <h1>Your prismic.io project</h1>
-          </a>
-
+          <h1><a href="/">Your prismic.io project</a></h1>
         </header>
 
         <h1>
@@ -41,14 +36,8 @@
         </ul>
 
         <p>
-          <a href="/${ref}">Back to home</a>
+          <a href="/">Back to home</a>
         </p>
-
-        <footer>
-          <c:if test="${!prismic.hasPrivilegedAccess()}">
-            <hr> <a href="/signin">Sign in to preview changes</a>
-          </c:if>
-        </footer>
 
     </body>
 </html>

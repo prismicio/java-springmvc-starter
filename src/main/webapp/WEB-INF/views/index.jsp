@@ -4,21 +4,16 @@
 <html>
     <head>
         <title>All documents</title>
+        <!-- Required for previews, edit button and experiments -->
+        <script src="//static.cdn.prismic.io/prismic.min.js"></script>        
     </head>
     <body>
 
-        <c:set var="ref" scope="page" value="${(empty prismic.maybeRef()) ? '' : '?ref='.concat(prismic.maybeRef())}"/>
-
         <header>
-          <jsp:include page="toolbar.jsp" />
-
-          <a href="/${ref}">
-            <h1>Your prismic.io project</h1>
-          </a>
-
+          <h1><a href="/">Your prismic.io project</a></h1>
         </header>
 
-        <form action="/search${ref}" method="GET">
+        <form action="/search" method="GET">
           <input type="text" name="q" value="">
           <input type="submit" value="Search">
         </form>
@@ -42,18 +37,12 @@
         <ul>
           <c:forEach items="${documents}" var="document">
             <li>
-              <a href="/documents/${document.id}/${document.slug}${ref}">
+              <a href="/documents/${document.id}/${document.slug}">
                 ${document.slug}
               </a>
             </li>
           </c:forEach>
         </ul>
-
-        <footer>
-          <c:if test="${!prismic.hasPrivilegedAccess()}">
-            <hr> <a href="/signin">Sign in to preview changes</a>
-          </c:if>
-        </footer>
 
     </body>
 </html>
