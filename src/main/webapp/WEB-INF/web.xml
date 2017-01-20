@@ -22,10 +22,12 @@
     <filter-name>prismicFilter</filter-name>
     <filter-class>io.prismic.servlet.PrismicFilter</filter-class>
     <init-param>
-        <param-name>endpoint</param-name>		
-        <param-value>https://lesbonneschoses.prismic.io/api</param-value>
-        <!-- param-name>accessToken</param-name>
-        <param-value>xxxx</param-value -->
+      <param-name>endpoint</param-name>
+      <param-value>https://lesbonneschoses.prismic.io/api</param-value>
+    </init-param>
+    <init-param>
+      <!-- param-name>accessToken</param-name>
+      <param-value>xxxx</param-value -->
     </init-param>
   </filter>
   <filter-mapping>
